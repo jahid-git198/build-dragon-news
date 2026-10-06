@@ -17,7 +17,7 @@
 // // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
 // export const auth = getAuth(app);
- // Import the functions you need from the SDKs you need
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -31,6 +31,7 @@ const firebaseConfig = {
   storageBucket: "build-dragon-news-b85c7.firebasestorage.app",
   messagingSenderId: "1085937729985",
   appId: "1:1085937729985:web:d32e1a62ff83bf7f12af40"
+
 };
 
 // Initialize Firebase

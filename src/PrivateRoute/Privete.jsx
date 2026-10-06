@@ -6,6 +6,7 @@ import Loading from "./Loading";
 function Privete({ children }) {
   const { user, loading } = useContext(AutContext);
   const lacation = useLocation();
+   console.log ( lacation.pathname)
 
   if (loading) {
     return <Loading></Loading>;
@@ -16,6 +17,8 @@ function Privete({ children }) {
   }
 
   return <Navigate state={lacation.pathname} to="/auth/login"></Navigate>;
+ 
+   
 }
-
+  
 export default Privete;

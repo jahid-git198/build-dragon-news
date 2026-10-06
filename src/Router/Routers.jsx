@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+ 
 import Layout from "../Layout/Layout";
 import Home from "../Home/Home";
 import Left from "../Leftassest/Left";
@@ -9,10 +9,12 @@ import Register from "../AuthloginRegister/Register/Register";
 import NewscardDetales from "../NewscardDetales/NewscardDetales";
 import Privete from "../PrivateRoute/Privete";
 import Loading from "../PrivateRoute/Loading";
+import { createBrowserRouter } from "react-router";
 
 export const router = createBrowserRouter([
   {
     path: "/",
+     
     element: <Layout></Layout>,
     errorElement: <div>not found</div>,
     children: [

@@ -9,6 +9,7 @@ function Header() {
               <p className='  relative text-[#706F6F]  text-[18px] '>Journalism Without Fear or Favour</p>
               <p className=' text-[#706F6F] font-medium text-[20px]'>
                 {format(new Date(), "EEEE , LLLL dd , yyyy")}</p>
+                
     
             </div>
   )

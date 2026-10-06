@@ -1,11 +1,14 @@
-import { log } from "firebase/firestore/pipelines";
 import React, { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AutContext } from "../../AutoProvider/ProviderAut";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { auth } from "../../Firebase auth/Firebase.config";
 
 function Login() {
-  const { signIn } = useContext(AutContext);
+    const lacation = useLocation();
+  const navigate = useNavigate();
+  const { signIn, sendResetEmail } = useContext(AutContext);
   const [unerror, setunerror] = useState("");
   const [show, setshow] = useState(false);
   const Submitlogin = (e) => {
@@ -13,6 +16,7 @@ function Login() {
     //  email?
     const email = e.target.email?.value;
     const password = e.target.password?.value;
+
     signIn(email, password)
       .then((resul) => {
         const user = resul.user;
@@ -24,10 +28,24 @@ function Login() {
         setunerror(errorcode);
       });
   };
+
+  //  forgate password
+   const handleForgetPassword = async (email) =>{
+
+      try {
+        await  sendResetEmail(email)
+         console.log( "success")
+        
+      } catch (error) {
+        console.log(error)
+        
+      }
+   }
+   
+  //  }
   //  lacatio and navigate
 
-  const lacation = useLocation();
-  const navigate = useNavigate();
+ 
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-200">
@@ -43,6 +61,7 @@ function Login() {
                 className="input input-bordered w-full"
                 name="email"
                 required
+               
               />
             </div>
 
@@ -53,7 +72,6 @@ function Login() {
                 placeholder="Password"
                 className="input input-bordered w-full"
                 name="password"
-                required
               />
 
               <button
@@ -69,9 +87,11 @@ function Login() {
               </div>
             </div>
 
-            <p> Forgate password</p>
+            <p className=" text-sm text-primary">
+              <button type="button" onClick={handleForgetPassword}>Forgate Password</button>
+            </p>
 
-            <div className=" flex gap-3">
+            <div className=" flex gap-3 ">
               <input type="checkbox" name="chekbox" id="" />I agree to the Terms
               & Conditions
             </div>
@@ -85,6 +105,7 @@ function Login() {
             <Link to="/auth/register" className="text-primary ml-2">
               Register
             </Link>
+  
           </p>
         </div>
       </div>
